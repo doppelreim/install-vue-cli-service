@@ -52,3 +52,14 @@ $ npm install
 But now, the assumption that the package-files are not changed does not hold.
 Instead, a couple of packages is moved around inside file `package-lock.json`.
 After it changes once, subsequent runs of `npm install` do not change the lockfile anymore.
+
+## flipflop
+
+Until we emulate a fresh dev and once more delete directory `node_modules`.
+
+Afterwards, running `npm install` will change the lockfile again.
+The change is a "revert" of the last changes.
+
+We can now keep doing this forevermore.
+Everytime, we start without directory `node_modules` and run `npm install`,
+the lockfile will flipflop between two states.
