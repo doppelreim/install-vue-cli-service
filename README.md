@@ -36,3 +36,19 @@ audited 1050 packages in 3.723s
 ```
 
 Looking good.
+
+## repro
+
+As a different dev, we do not have directory `node_modules`:
+```
+$ rm -rf node_modules
+```
+
+We install the packages:
+```
+$ npm install
+```
+
+But now, the assumption that the package-files are not changed does not hold.
+Instead, a couple of packages is moved around inside file `package-lock.json`.
+After it changes once, subsequent runs of `npm install` do not change the lockfile anymore.
