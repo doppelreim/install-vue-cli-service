@@ -15,3 +15,24 @@ $ docker run -it --rm --user $(id -u):$(id -g) --mount type=bind,src="$(pwd)",ds
 ```
 
 Inside the dev-container, we have node (v12.18.4) and npm (v6.14.6).
+
+## setup the repro
+
+Install the package:
+```
+$ npm install @vue/cli-service
+...
++ @vue/cli-service@4.5.7
+added 1047 packages from 884 contributors and audited 1050 packages in 50.223s
+```
+
+Assumption: Running `npm install` again and again should not change the package-files.
+
+Check assumption:
+```
+$ npm install
+...
+audited 1050 packages in 3.723s
+```
+
+Looking good.
